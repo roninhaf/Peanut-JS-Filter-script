@@ -41,22 +41,26 @@ $(document).ready(function(){
 			
         }
 
+        alert(finalValue);
+        
+        if (! finalValue == '') {
+            $('.filter').filter(finalValue).show(500);
+        } else {
+            $('.filter').show();
+        }
+
         if (value=='all') {
             arrayValue = [];
             finalValue = '';
 			$('.filter').show();
 			$('.filter-button').css('color','black');
         }
-        
-        alert(finalValue);
-        
-        $('.filter').filter(finalValue).show(500);
     });
 
     
-    if ($('.filter-button').removeClass('active')) {
+    /*if ($('.filter-button').removeClass('active')) {
 $(this).removeClass("active");
 }
-$(this).addClass("active");
+$(this).addClass("active");*/
 
 });
