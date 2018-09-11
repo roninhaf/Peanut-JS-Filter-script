@@ -14,12 +14,23 @@ function myFunction(x) {
 }
 $(document).ready(function(){
 
+    /*Declaring array holding all the added attributes*/ 
     var arrayValue = [];
 
     $('.filter-button').click(function(){
-        
+
+        /*Declaring value that will hold an attribute per click*/
 		var value = $(this).attr('data-filter');
         
+        /**Specific case for value all */
+        if (value=='all') {
+            $('.filter').show();
+            $('.filter-button').css('color','black').removeClass('buttonactive');
+            arrayValue = [];
+            return;
+        }
+
+        /*If button not already active, add value to array, otherwise remove the value from array*/
         if (! $(this).hasClass('buttonactive')){
 			$(this).css('color','red').addClass('buttonactive');
             arrayValue.push(value);
@@ -31,29 +42,24 @@ $(document).ready(function(){
             }
         }
         
+        /*Start by hiding everything*/
         $('.filter').hide();		
         
+        /*Initialize empty final value that will hold what the array contained. */
         var finalValue = '';
 
+        /**Adding all the values of the array to the final value */
         for (index=0;index<arrayValue.length;index++) {
 			
 			finalValue += '.'+arrayValue[index];
 			
         }
-
-        alert(finalValue);
         
+        /**Show final result */
         if (! finalValue == '') {
             $('.filter').filter(finalValue).show(500);
         } else {
             $('.filter').show();
-        }
-
-        if (value=='all') {
-            arrayValue = [];
-            finalValue = '';
-			$('.filter').show();
-			$('.filter-button').css('color','black');
         }
     });
 
