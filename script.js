@@ -62,11 +62,4 @@ $(document).ready(function(){
             $('.filter').show();
         }
     });
-
-    
-    /*if ($('.filter-button').removeClass('active')) {
-$(this).removeClass("active");
-}
-$(this).addClass("active");*/
-
 });
