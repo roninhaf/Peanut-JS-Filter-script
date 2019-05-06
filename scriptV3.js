@@ -24,7 +24,6 @@ document.addEventListener("DOMContentLoaded", function startScript() {
     const allCards = Array.from(document.getElementsByClassName('filter'));
     const buttons = Array.from(document.getElementsByClassName('filter-button'));
     var classSelected = [];
-    console.log(actorOrModelCards);
 
     function displayDefault() {
         
@@ -41,16 +40,21 @@ document.addEventListener("DOMContentLoaded", function startScript() {
             classSelected = [];
             displayDefault();
             return;
-        }
+        } /* else {
+            event.target.style.color = red;
+        } */
         
         classSelected.includes(selected) ? classSelected.splice(classSelected.indexOf(selected), 1) : classSelected.push(selected);
+        
         if (classSelected.length == 0) {
             displayDefault();
             return;
         }
         
         actorOrModelCards.map(function (elem)  {
+
             let containsClass = true;
+            
             classSelected.map(thatClass => {if (! elem.classList.contains(thatClass)) containsClass = false});
             containsClass ? elem.style.display = 'initial' : elem.style.display = 'none';
         });
